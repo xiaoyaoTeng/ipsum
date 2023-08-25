@@ -11,7 +11,7 @@ FILE=hosts.deny
  
 cd $TMP_DIR
 
-curl --compressed $URL 2>/dev/null | grep -v -E "\s[1-2]$" | cut -f 1  > $FILE
+curl --compressed $URL 2>/dev/null | grep -v "#" | grep -v -E "\s[1-2]$" | cut -f 1  > $FILE
 sed -i 's/^/ALL:&/g' $FILE
 LINES=`grep "^ALL:" $FILE | wc -l`
  
